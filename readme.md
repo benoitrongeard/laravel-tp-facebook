@@ -7,6 +7,37 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## Installation
+Sur votre poste vous devez installer :
+- [Vagrant](https://www.vagrantup.com/)
+- [Virtualbox](https://www.virtualbox.org/)
+- PHP >= 7
+- Composer
+- npm >= 5
+
+```bash
+$ git clone https://github.com/benoitrongeard/laravel-tp-facebook.git
+$ cp .env.example .env
+$ composer install
+$ npm install
+$ php artisan key:generate
+```
+
+Initialisation de la machine virtuelle
+
+```bash
+$ vagrant up
+```
+
+Vous pouvez maintenant accéder au site via [http://192.168.10.10](http://192.168.10.10)
+
+```bash
+$ vagrant ssh
+$ cd /home/vagrant/code
+```
+
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:

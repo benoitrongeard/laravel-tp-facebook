@@ -1,0 +1,17 @@
+ip: 192.168.10.10
+memory: 2048
+cpus: 1
+provider: virtualbox
+
+folders:
+    -
+        map: '.'
+        to: /home/vagrant/code
+sites:
+    -
+        map: homestead.test
+        to: /home/vagrant/code/public
+databases:
+    - homestead
+name: laravel-tp-facebook
+hostname: laravel-tp-facebook
