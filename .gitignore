@@ -9,6 +9,7 @@
 /.vscode
 /nbproject
 /.vagrant
+/storage/debugbar
 npm-debug.log
 yarn-error.log
 .env
