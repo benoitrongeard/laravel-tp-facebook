@@ -11,9 +11,20 @@
 |
 */
 
-Route::redirect('/', '/home');
+use Illuminate\Support\Facades\Route;
 
+Route::redirect('/', '/home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/', 'PageController@newsFeed')->name('news-feed');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/annuaire', 'UserController@index')->name('directory');
+    Route::resource('users', 'UserController');
+    Route::post('/users/{users}/friends', 'UserController@storeFriend')->name('users.friends.store');
+    Route::resource('messages', 'MessageController', ['only' => ['store', 'destroy']]);
+    Route::post('messages/{messages}/like', 'MessageController@like')->name('messages.likes.store');
+    Route::resource('messages.comments', 'CommentController', ['only' => ['store', 'destroy']]);
+    Route::post('messages/{messages}/comments/{comments}/like', 'CommentController@like')->name('   comments.likes.store');
+});

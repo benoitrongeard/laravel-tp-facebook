@@ -24,4 +24,16 @@ class Message extends Model
     {
         return $this->morphMany(Like::class, 'likeable');
     }
+
+    /**
+     * @param $query
+     * @param $user
+     * @return mixed
+     */
+    public function scopeReadableFor($query, $user){
+        $ids = $user->friends->pluck('id')->toArray();
+        array_push($ids, $user->id);
+
+        return $this->whereIn('user_id', $ids)->orderBy('id', 'desc');
+    }
 }
