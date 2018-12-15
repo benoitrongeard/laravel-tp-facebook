@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('facebook');
+        //Todo modifier la redirection
+        return view('pages.welcome');
     }
 }
