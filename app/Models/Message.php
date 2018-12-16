@@ -38,7 +38,8 @@ class Message extends Model
         return $this->morphMany(Like::class, 'likable');
     }
 
-    public function likeOrDislike(){
+    public function likeOrDislike()
+    {
 
         $like = $this->currentLike();
         $id = Auth()->user()->id;
@@ -54,21 +55,23 @@ class Message extends Model
         }
     }
 
-    public function liked(){
-        if($this->currentLike()){
+    public function liked()
+    {
+        if ($this->currentLike()) {
             return true;
         }
         return false;
     }
 
-    public function currentLike(){
-        $test = $this->likes()
+    public function currentLike()
+    {
+        return $this->likes()
             ->where('user_id', Auth::user()->id)
             ->first();
-        return $test;
     }
 
-    public function scopeReadableFor($query, $user){
+    public function scopeReadableFor($query, $user)
+    {
         $ids = $user->friends->pluck('id')->toArray();
         array_push($ids, $user->id);
 

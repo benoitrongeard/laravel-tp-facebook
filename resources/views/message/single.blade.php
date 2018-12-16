@@ -7,8 +7,7 @@
             </div>
             <form method="post" action="{{ route('messages.likes.store', ['message' => $message]) }}">
                 {{ csrf_field() }}
-				{{-- si les likes sont > 0 alors on affiche le nombre de likes(s) --}}
-				@if($message->likes)
+				@if(count($message->likes) > 0)
 					{{ count($message->likes) }}
 				@endif
                 <button type="submit" class="btn btn-default right">
@@ -23,9 +22,9 @@
 
             @foreach($message->comments as $comment)
 			<div class="padding commentaires">
-				{{-- inclure la vue single du commentaire $comment --}}
+				@include('comment.single', ['comment' => $comment])
 			</div>
             @endforeach
-			{{-- inclure la vue form du message $message --}}
+			@include('comment.form', ['message' => $message])
 		</div>
 	</div>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * App\Models\Comment
@@ -33,10 +34,19 @@ class Comment extends Model
 
     public function likes()
     {
-        return $this->morphMany(Like::class, 'likeable');
+        return $this->morphMany(Like::class, 'likable');
     }
 
-    public function likeOrDislike(){
+    public function liked()
+    {
+        if ($this->currentLike()) {
+            return true;
+        }
+        return false;
+    }
+
+    public function likeOrDislike()
+    {
 
         // Récupération du like de ce commentaire par cet utilisateur
         $like = $this->currentLike();
@@ -52,11 +62,10 @@ class Comment extends Model
         }
     }
 
-    public function currentLike(){
+    public function currentLike()
+    {
         return $this->likes()
             ->where('user_id', Auth::user()->id)
-            ->where('likeable_type', $this->morphClass)
-            ->where('likeable_id', $this->id)
             ->first();
     }
 }

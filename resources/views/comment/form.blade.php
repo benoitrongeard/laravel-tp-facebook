@@ -1,4 +1,4 @@
-<form class="padding" method="post" action="{{-- mettre la route pour créer un commentaire en utilisant la méthode route ---}}">
+<form class="padding" method="post" action="{{ route('messages.comments.store', ['message' => $message]) }}">
     {{ csrf_field() }}
     <div class="input-group">
         <div class="input-group-btn">

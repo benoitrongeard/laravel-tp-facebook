@@ -24,5 +24,5 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('messages', 'MessageController', ['only' => ['store', 'destroy']]);
     Route::post('messages/{messages}/like', 'MessageController@like')->name('messages.likes.store');
     Route::resource('messages.comments', 'CommentController', ['only' => ['store', 'destroy']]);
-    Route::post('messages/{messages}/comments/{comments}/like', 'CommentController@like')->name('   comments.likes.store');
+    Route::post('messages/{messages}/comments/{comments}/like', 'CommentController@like')->name('comments.likes.store');
 });

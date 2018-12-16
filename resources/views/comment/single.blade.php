@@ -1,8 +1,16 @@
 <div class="commentaire">
-	<div class="fb-blue">{{-- nom de l'utilisateur --}}: </div> {{-- contenu du message --}}
+	<div class="fb-blue">{{ $comment->user->name }} : </div> {{ $comment->content }}
 	</div>
-	<form method="post" action="{{-- route pour ajouter un kiff sur un commentaire en utilisant la fonction route --}}">
+	<form method="post" action="{{route('comments.likes.store', ['message' => $comment->message, 'comment' => $comment])}}">
 		{{ csrf_field() }}
-		{{-- si les likes sont > 0 alors on affiche le nombre de kiff(s) --}}
-		<button type="submit" class="btn btn-default">Je kiff <i class="glyphicon glyphicon-thumbs-up"></i></button>
+		@if(count($comment->likes) > 0)
+			{{ count($comment->likes) }}
+		@endif
+		<button type="submit" class="btn btn-default right">
+			@if($comment->liked())
+				Je n'aime plus
+			@else
+				J'aime
+			@endif
+			<i class="glyphicon glyphicon-thumbs-up"></i></button>
 	</form>
