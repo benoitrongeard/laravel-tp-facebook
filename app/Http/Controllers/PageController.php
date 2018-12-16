@@ -13,6 +13,6 @@ class PageController extends Controller
         $user = Auth::user();
         $messages = Message::readableFor($user)->get();
 
-        return view('pages.news-feed', compact('user','messages'));
+        return view('pages.news-feed', ['messages' => $messages]);
     }
 }

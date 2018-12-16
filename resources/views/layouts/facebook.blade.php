@@ -46,8 +46,13 @@
 								</ul>
 								<ul class="nav navbar-nav navbar-right">
 									<li>
-										<a href="{{ route('auth.logout') }}" role="button" data-toggle="modal"><i class="glyphicon glyphicon-log-out"></i> Déconnexion</a>
+										<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+											Déconnexion
+										</a>
 									</li>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										@csrf
+									</form>
 								</ul>
 							</nav>
 						</div>

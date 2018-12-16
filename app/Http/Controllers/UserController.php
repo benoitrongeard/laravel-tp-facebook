@@ -68,9 +68,9 @@ class UserController extends Controller
 
     public function storeFriend(Request $request)
     {
-        $auth = Auth::user();
+        $user = Auth::user();
 
-        $auth->friends()->attach([$request->input('user_id')]);
+        $user->friends()->attach([$request->input('user_id')]);
 
         return redirect()->back();
     }

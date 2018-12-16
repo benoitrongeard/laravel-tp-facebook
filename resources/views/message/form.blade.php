@@ -1,5 +1,5 @@
 <div class="well">
-	<form class="form-horizontal" role="form" method="post" action="{{-- route pour créer un message en utilisant la fonction route --}}">
+	<form class="form-horizontal" role="form" method="post" action="{{ route('messages.store') }}">
 		<h4>What's New</h4>
 		{{ csrf_field() }}
 		<div class="form-group" style="padding:14px;">

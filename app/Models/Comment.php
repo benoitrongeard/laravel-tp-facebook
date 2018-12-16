@@ -4,6 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Comment
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Like[] $likes
+ * @property-read \App\Models\Message $message
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment query()
+ * @mixin \Eloquent
+ */
 class Comment extends Model
 {
     protected $fillable = [

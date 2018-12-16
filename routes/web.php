@@ -13,8 +13,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/home');
-
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){

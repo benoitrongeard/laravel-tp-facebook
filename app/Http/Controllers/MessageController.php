@@ -10,7 +10,7 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $message = new Message($request->all());
-        $message->user()->associate(Auth::user());
+        $message->user()->associate(Auth()->user());
         $message->save();
 
         return redirect()->back();
