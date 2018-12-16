@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -17,9 +18,9 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $friends = $user->friends();
+        $users = User::where('id', '!=', Auth::user()->id)->get();
 
-        return view('pages.users.directory', ['friends' => $friends]);
+        return view('pages.users.directory', ['users' => $users]);
     }
 
     /**
@@ -57,7 +58,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        $user->update($request->all());
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+        $user->update($data);
 
         return redirect()->route('users.edit', ['user' => $user]);
     }
@@ -73,11 +76,15 @@ class UserController extends Controller
         //
     }
 
-    public function storeFriend(Request $request)
+    public function storeFriend(Request $request, $idUser)
     {
         $user = Auth::user();
 
-        $user->friends()->attach([$request->input('user_id')]);
+        if ($user->friends->contains($idUser)) {
+            $user->friends()->detach($idUser);
+        } else {
+            $user->friends()->attach($idUser);
+        }
 
         return redirect()->back();
     }

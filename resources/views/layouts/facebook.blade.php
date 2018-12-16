@@ -60,6 +60,7 @@
 							<div class="col-sm-6 col-sm-offset-3">
 								<div class="padding">
 									<div class="full col-sm-9">
+											@include('partials.errors')
 											@yield('content')
 									</div>
 								</div>
