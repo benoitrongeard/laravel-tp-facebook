@@ -1,5 +1,5 @@
-<form class="padding" method="post" action="{{ route('messages.comments.store', ['message' => $message]) }}">
-    {{ csrf_field() }}
+<form class="padding" method="post" action="{{-- mettre la route pour créer un commentaire en utilisant la méthode route ---}}">
+    @csrf
     <div class="input-group">
         <div class="input-group-btn">
             <button class="btn btn-primary">Commenter</button>

@@ -1,7 +1,7 @@
-<form method="post" action="{{ route('users.friends.store', ['user' => $user]) }}">
-    {{ csrf_field() }}
+<form method="post" action="{{-- route pour ajouter l'utilisateur en ami à l'utilisateur courant avec la fonction route --}}">
+    @csrf
     <div class="ami">
-        {{ $user->name }}
+        {{-- nom de l'utilisateur --}}
         @if(!auth()->user()->friends->contains($user))
             <button type="submit" class="btn btn-primary fl-right"> <i class="glyphicon glyphicon-plus"></i></button>
         @else

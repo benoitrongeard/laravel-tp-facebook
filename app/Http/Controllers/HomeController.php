@@ -23,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //Todo modifier la redirection
         return view('pages.welcome');
     }
 }

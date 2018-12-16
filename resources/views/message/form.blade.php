@@ -1,7 +1,7 @@
 <div class="well">
-	<form class="form-horizontal" role="form" method="post" action="{{ route('messages.store') }}">
+	<form class="form-horizontal" role="form" method="post" action="{{-- route pour créer un message en utilisant la fonction route --}}">
 		<h4>What's New</h4>
-		{{ csrf_field() }}
+		@csrf
 		<div class="form-group" style="padding:14px;">
 			<textarea name="content" class="form-control" placeholder="Ecrire un message"></textarea>
 		</div>

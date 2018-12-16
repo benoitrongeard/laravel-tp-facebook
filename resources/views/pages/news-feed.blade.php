@@ -1,9 +1,6 @@
 @extends('layouts.facebook')
 
 @section('content')
-    @include('message.form')
-
-    @foreach($messages as $message)
-        @include('message.single', ['message' => $message])
-    @endforeach
+    {{-- inclure la vue form d'un message --}}
+    {{-- parcourir la liste des messages avec @foreach et inclure la vue single pour chaque message --}}
 @endsection
