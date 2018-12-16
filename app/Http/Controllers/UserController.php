@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $messages = User::findOrFail($id)->messages()->orderBy('id', 'desc')->get();
+
+        return view('pages.users.profile', ['messages' => $messages]);
     }
 
     /**
@@ -40,7 +43,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('pages.users.edit', ['user' => $user]);
     }
 
     /**
@@ -52,7 +56,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        return redirect()->route('users.edit', ['user' => $user]);
     }
 
     /**

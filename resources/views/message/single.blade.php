@@ -1,5 +1,5 @@
 	<div class="panel panel-default">
-		<div class="panel-heading">{{ Auth()->user()->name }} - {{ $message->created_at->diffForHumans() }}</div>
+		<div class="panel-heading">{{ $message->user->name }} - {{ $message->created_at->diffForHumans() }}</div>
 		<div class="panel-body">
 
 			<div class="message">

@@ -1,6 +1,6 @@
 @extends('layouts.facebook')
 
 @section('content')
-    <h2>{{-- nom de l'utilisateur --}}</h2>
-    {{-- inclure la vue single de l'utilisateur $user --}}
+    <h2>Profil de : {{Auth::user()->name}}</h2>
+    @include('user.single', ['messages' => $messages])
 @endsection

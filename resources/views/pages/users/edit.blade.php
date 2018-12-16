@@ -7,15 +7,17 @@
 		Modifier le profil
 	</div>
 
-	<form class="form" method="POST" action="{{ route('auth.register') }}">
-	    {!! csrf_field() !!}
+	<form class="form" method="POST" action="{{ route('users.update', ['user' => $user]) }}">
+	    @csrf
 
-	    <div class="input-group text-center col-sm-12 padding">
-	        <input class="form-control input-lg" type="text" name="name" placeholder="Nom"  value="{{ old('name') }}">
+		<input name="_method" type="hidden" value="PUT">
+
+		<div class="input-group text-center col-sm-12 padding">
+	        <input class="form-control input-lg" type="text" name="name" placeholder="Nom"  value="{{ $user->name }}">
 	    </div>
 
 	    <div class="input-group text-center col-sm-12 padding">
-	        <input class="form-control input-lg" type="email" name="email" placeholder="Email"  value="{{ old('email') }}">
+	        <input class="form-control input-lg" type="email" name="email" placeholder="Email"  value="{{ $user->email }}">
 	    </div>
 
 	    <div class="input-group text-center col-sm-12 padding">

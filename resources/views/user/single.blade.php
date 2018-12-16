@@ -1,7 +1,8 @@
 
-{{-- inclure la vue form pour les messages --}}
+@include('message.form')
 
 <h3>Mes messages</h3>
 
-{{-- parcourir la liste des messages de l'utilisateur avec @foreach --}}
-	{{-- dans la boucle inclure la vue single pour chaque message --}}
+@foreach($messages as $message)
+    @include('message.single', ['message' => $message])
+@endforeach
